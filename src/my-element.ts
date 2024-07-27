@@ -37,6 +37,9 @@ export class MyElement extends LitElement {
         background: #2f2f2e;
         color: white;
         border: 1px solid lightgray;
+        .title {
+          border: 1px solid white;
+        }
       }
       .title {
         font-weight: bold;
@@ -47,6 +50,8 @@ export class MyElement extends LitElement {
       .tracker {
         font-family: "courier new";
         font-size: 14px;
+        height: 80%;
+        overflow: auto;
       }
     `,
   ];
