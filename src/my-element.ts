@@ -72,7 +72,6 @@ export class MyElement extends LitElement {
       authType: AuthType.Basic,
       username: "letsthinkbetter@gmail.com",
       password: "}g!V~#7K7)$B}%M",
-      // getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
     });
   }
 
