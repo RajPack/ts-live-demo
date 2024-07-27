@@ -9,6 +9,10 @@ export class MyElement extends LitElement {
       :host {
         display: block;
       }
+      .container {
+        width: 100vw;
+        height: 80vh;
+      }
     `,
   ];
 
@@ -34,8 +38,8 @@ export class MyElement extends LitElement {
         width: "100%",
         height: "100%",
       },
-      // liveboardId: "26bdf658-9fbc-4c36-87a7-a7f657cc4627",
-      liveboardId: "22e79c21-eec4-40bf-997b-7454c6e3a2a5",
+      liveboardId: "26bdf658-9fbc-4c36-87a7-a7f657cc4627",
+      // liveboardId: "22e79c21-eec4-40bf-997b-7454c6e3a2a5",
     });
 
     // Do not forget to call render.
