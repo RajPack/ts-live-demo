@@ -18,7 +18,9 @@ export class MyElement extends LitElement {
     super.connectedCallback();
     init({
       thoughtSpotHost: "team2.thoughtspot.cloud",
-      authType: AuthType.None,
+      authType: AuthType.Basic,
+      username: "letsthinkbetter@gmail.com",
+      password: "ltb@MAX55",
       // getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
     });
     debugger;
