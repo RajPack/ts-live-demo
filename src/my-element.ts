@@ -60,7 +60,7 @@ export class MyElement extends LitElement {
       thoughtSpotHost: "team2.thoughtspot.cloud",
       authType: AuthType.Basic,
       username: "letsthinkbetter@gmail.com",
-      password: "ltb@MAX55",
+      password: "}g!V~#7K7)$B}%M",
       // getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
     });
     debugger;
@@ -109,8 +109,8 @@ export class MyElement extends LitElement {
                   return nothing;
                 }
                 return html`
-                  Type: ${t.type} ---- Action: ${t.data.action} --- content:
-                  ${JSON.stringify(t.data)}
+                  Type: <b>${t.type}</b> ---- Action:
+                  <b>${t.data.action}</b> --- content: ${JSON.stringify(t.data)}
                   <br />
                   <br />
                   <br />
