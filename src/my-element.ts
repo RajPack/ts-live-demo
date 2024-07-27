@@ -63,18 +63,19 @@ export class MyElement extends LitElement {
     super.connectedCallback();
     init({
       thoughtSpotHost: "team2.thoughtspot.cloud",
+      autoLogin: true,
       authType: AuthType.Basic,
       username: "letsthinkbetter@gmail.com",
       password: "}g!V~#7K7)$B}%M",
       // getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
     });
-    debugger;
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
     super.firstUpdated(_changedProperties);
     console.log(this.vizcont);
     const lb = new LiveboardEmbed(this.vizcont, {
+      visibleActions: [],
       frameParams: {
         width: "100%",
         height: "100%",
