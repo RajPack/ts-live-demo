@@ -10,16 +10,43 @@ export class MyElement extends LitElement {
     css`
       :host {
         display: block;
+        box-sizing: border-box;
+      }
+      .app {
+        width: 100vw;
+        height: 100vh;
+        padding: 12px;
+        background: #e4e4e4;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+      .ts-container {
+        width: 100%;
       }
       .container {
-        width: 100vw;
-        height: calc(100vh - 260px);
+        padding: 12px;
+        background: #d9d98c;
+        width: 100%;
+        height: calc(100vh - 280px);
+        box-sizing: border-box;
       }
       .event-tracker {
         height: 250px;
-        width: 100vw;
-        background: lightblue;
+        width: 100%;
+        background: #2f2f2e;
+        color: white;
         border: 1px solid lightgray;
+      }
+      .title {
+        font-weight: bold;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+      }
+      .tracker {
+        font-family: "courier new";
+        font-size: 14px;
       }
     `,
   ];
@@ -70,28 +97,33 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <div class="event-tracker">
-        <div class="note">Host app context</div>
-        <div class="tracker">
-          ${repeat(
-            this.eventTracker,
-            (t) => t,
-            (t) => {
-              if (t.type !== "cross-filter-changed") {
-                return nothing;
+      <div class="app">
+        <div class="event-tracker">
+          <div class="title">Host app (available context propogation)</div>
+          <div class="tracker">
+            ${repeat(
+              this.eventTracker,
+              (t) => t,
+              (t) => {
+                if (t.type !== "cross-filter-changed") {
+                  return nothing;
+                }
+                return html`
+                  Type: ${t.type} ---- Action: ${t.data.action} --- content:
+                  ${JSON.stringify(t.data)}
+                  <br />
+                  <br />
+                  <br />
+                `;
               }
-              return html`
-                Type: ${t.type} ---- Action: ${t.data.action} --- content:
-                ${JSON.stringify(t.data)}
-                <br />
-                <br />
-                <br />
-              `;
-            }
-          )}
+            )}
+          </div>
+        </div>
+        <div class="ts-container">
+          <div class="title">ThoughtSpot Iframe</div>
+          <div class="container">elem</div>
         </div>
       </div>
-      <div class="container">elem</div>
     `;
   }
 }
