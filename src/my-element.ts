@@ -1,7 +1,8 @@
-import { LitElement, html, css, PropertyValues } from "lit";
+import { LitElement, html, css, PropertyValues, nothing } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 import { LiveboardEmbed, AuthType, init } from "@thoughtspot/visual-embed-sdk";
 import { EmbedEvent } from "@thoughtspot/visual-embed-sdk";
+import { repeat } from "lit/directives/repeat.js";
 
 @customElement("my-element")
 export class MyElement extends LitElement {
@@ -12,10 +13,10 @@ export class MyElement extends LitElement {
       }
       .container {
         width: 100vw;
-        height: 80vh;
+        height: calc(100vh - 260px);
       }
       .event-tracker {
-        height: 400px;
+        height: 250px;
         width: 100vw;
         background: lightblue;
         border: 1px solid lightgray;
@@ -70,6 +71,24 @@ export class MyElement extends LitElement {
     return html`
       <div class="event-tracker">
         <div class="note">Host app context</div>
+        <div class="tracker">
+          ${repeat(
+            this.eventTracker,
+            (t) => t,
+            (t) => {
+              if (t.type !== "cross-filter-changed") {
+                return nothing;
+              }
+              return html`
+                Type: ${t.type} ---- Action: ${t.data.action} --- content:
+                ${JSON.stringify(t.data)}
+                <br />
+                <br />
+                <br />
+              `;
+            }
+          )}
+        </div>
       </div>
       <div class="container">elem</div>
     `;
