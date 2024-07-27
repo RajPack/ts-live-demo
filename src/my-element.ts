@@ -18,8 +18,8 @@ export class MyElement extends LitElement {
     super.connectedCallback();
     init({
       thoughtSpotHost: "team2.thoughtspot.cloud",
-      authType: AuthType.TrustedAuthToken,
-      getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
+      authType: AuthType.None,
+      // getAuthToken: async () => "14fd36b9-fd9f-4bf1-8875-716c2d803ee4",
     });
     debugger;
   }
