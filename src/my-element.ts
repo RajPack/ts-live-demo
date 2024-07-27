@@ -56,14 +56,14 @@ export class MyElement extends LitElement {
   }
 
   bindEvents(lb: LiveboardEmbed) {
-    lb.on(EmbedEvent.FilterChanged, (filters) => {
+    lb.on(EmbedEvent.ALL, (filters) => {
       this.eventTracker.push(filters);
       console.log(this.eventTracker);
     });
-    lb.on(EmbedEvent.VizPointClick, (clickviz) => {
-      this.eventTracker.push(clickviz);
-      console.log(this.eventTracker);
-    });
+    // lb.on(EmbedEvent.VizPointClick, (clickviz) => {
+    //   this.eventTracker.push(clickviz);
+    //   console.log(this.eventTracker);
+    // });
   }
 
   render() {
