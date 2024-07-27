@@ -1,6 +1,7 @@
 import { LitElement, html, css, PropertyValues } from "lit";
-import { customElement, query } from "lit/decorators.js";
+import { customElement, query, state } from "lit/decorators.js";
 import { LiveboardEmbed, AuthType, init } from "@thoughtspot/visual-embed-sdk";
+import { EmbedEvent } from "@thoughtspot/visual-embed-sdk";
 
 @customElement("my-element")
 export class MyElement extends LitElement {
@@ -13,10 +14,17 @@ export class MyElement extends LitElement {
         width: 100vw;
         height: 80vh;
       }
+      .event-tracker {
+        height: 400px;
+        width: 100vw;
+        background: lightblue;
+        border: 1px solid lightgray;
+      }
     `,
   ];
 
   @query(".container") vizcont: any;
+  @state() eventTracker: any[] = [];
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -44,9 +52,26 @@ export class MyElement extends LitElement {
 
     // Do not forget to call render.
     lb.render();
+    this.bindEvents(lb);
+  }
+
+  bindEvents(lb: LiveboardEmbed) {
+    lb.on(EmbedEvent.FilterChanged, (filters) => {
+      this.eventTracker.push(filters);
+      console.log(this.eventTracker);
+    });
+    lb.on(EmbedEvent.VizPointClick, (clickviz) => {
+      this.eventTracker.push(clickviz);
+      console.log(this.eventTracker);
+    });
   }
 
   render() {
-    return html` <div class="container">elem</div> `;
+    return html`
+      <div class="event-tracker">
+        <div class="note">Host app context</div>
+      </div>
+      <div class="container">elem</div>
+    `;
   }
 }
