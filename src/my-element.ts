@@ -59,6 +59,7 @@ export class MyElement extends LitElement {
   bindEvents(lb: LiveboardEmbed) {
     lb.on(EmbedEvent.ALL, (filters) => {
       this.eventTracker.push(filters);
+      this.eventTracker = [...this.eventTracker];
       console.log(this.eventTracker);
     });
     // lb.on(EmbedEvent.VizPointClick, (clickviz) => {
