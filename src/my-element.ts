@@ -1,6 +1,11 @@
 import { LitElement, html, css, PropertyValues, nothing } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
-import { LiveboardEmbed, AuthType, init } from "@thoughtspot/visual-embed-sdk";
+import {
+  LiveboardEmbed,
+  AuthType,
+  init,
+  Action,
+} from "@thoughtspot/visual-embed-sdk";
 import { EmbedEvent } from "@thoughtspot/visual-embed-sdk";
 import { repeat } from "lit/directives/repeat.js";
 
@@ -75,7 +80,12 @@ export class MyElement extends LitElement {
     super.firstUpdated(_changedProperties);
     console.log(this.vizcont);
     const lb = new LiveboardEmbed(this.vizcont, {
-      visibleActions: [],
+      visibleActions: [
+        Action.AddFilter,
+        Action.CrossFilter,
+        Action.RemoveCrossFilter,
+        Action.DrillDown,
+      ],
       frameParams: {
         width: "100%",
         height: "100%",
